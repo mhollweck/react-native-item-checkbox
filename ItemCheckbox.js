@@ -22,6 +22,7 @@ var ItemCheckbox = React.createClass({
     iconSize: React.PropTypes.string,
     checked: React.PropTypes.bool,
     style: React.PropTypes.func,
+    default: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
@@ -34,6 +35,7 @@ var ItemCheckbox = React.createClass({
       color: 'grey',
       iconSize: 'normal,',
       checked: false,
+      default: false
     };
   },
 
@@ -100,6 +102,13 @@ var ItemCheckbox = React.createClass({
   componentDidMount: function() {
     if (this.props.checked) {
       this._completeProgress();
+    }
+    
+    if (this.props.default) {
+      this.setState({
+        checked: true,
+        bg_color: this.props.color,
+      });
     }
   },
 
